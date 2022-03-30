@@ -1,0 +1,82 @@
+<%-include('../../partials/header');%>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3" style="background-image: linear-gradient(45deg, #072b90, #0647a2, #046dbb); background-attachment: fixed;">
+    
+        <a href="/" class="navbar-brand">
+            <img src="/img/logo.png" style="width: 3cm;" draggable="false">
+        </a>
+            
+        <ul class="navbar-nav ml-auto">
+    
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+    
+        </ul>
+
+    </nav>
+
+    <div class="container text-left" style="max-width: 24cm;">
+
+        <hr>
+
+        <div class="text-center"><h3>Recuperar Senha</h3></div>
+
+        <hr>
+
+        <form action="/login/recuperar-senha" method="post">
+            <label>Digite seu e-mail:</label>
+            <input type="email" class="form-control mb-3" name="email" placeholder="exemplo@gmail.com" spellcheck="false" autofocus="" required>
+            <input type="submit" class="btn btn-success btn-block" value="Enviar link de recuperação">
+            <br>
+        </form>
+
+        <div class="card">
+            <div class="card-header">
+                <label>Como funciona a recuperação de senha?</label>
+            </div>
+            <div class="card-body">
+                • Quando você perde sua senha é possível recuperá-la através do e-mail que foi cadastrado junto ao usuário. Se tudo estiver correto e o e-mail estiver cadastrado, um link de recuperação será enviado ao seu e-mail.
+                <br><br>
+                • Caso o e-mail não seja entregue entre em contato com <a href="javascript:copiarTexto();">sistema.plenaconstrutora@gmail.com</a> e informe os dados de usuário, como seu nome e outras informações pertinentes da sua conta.
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+    <input type="hidden" value="<%=msg%>" id="msg">
+
+    <script>
+
+        function copyTextToClipboard(text) {
+
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(text);
+                return;
+            }
+
+            navigator.clipboard.writeText(text);
+        }
+
+        function copiarTexto() {
+            copyTextToClipboard('sistema.plenaconstrutora@gmail.com');
+        }
+
+        (() => {
+
+            const msg = document.getElementById('msg').value || "";
+
+            if(msg != ""){
+                alert(msg);
+            }
+
+        })()
+    </script>
+
+</body>
+
+<%-include('../../partials/footer');%>

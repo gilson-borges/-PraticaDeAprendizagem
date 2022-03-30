@@ -1,0 +1,57 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container ">
+
+        <div class="text-center mb-4"><h3>Documentos</h3></div>
+
+        <hr>
+
+        <ul class="nav nav-tabs mb-3 justify-content-center">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/cadastros/documentos">Consulta</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link active disabled" href="/cadastros/documentos/id/<%=form.id%>">Informações</a>
+            </li>
+        
+        </ul>
+
+        <form action="/cadastros/documentos/id/<%=form.id%>" method="post">
+
+            <%-include('./forms/register/filled.ejs');%>
+
+            <input type="submit" class="btn btn-success btn-block mb-2" value="Salvar" formaction="/cadastros/documentos/id/<%=form.id%>">
+
+        </form>
+
+        <form action="/cadastros/documentos/id/<%=form.id%>/deletar" method="post" onsubmit="confirmDelete(event, this);">
+            <input type="submit" class="btn btn-danger btn-block mb-3" value="Excluir">
+        </form>
+
+    </div>
+
+</body>
+
+<script>
+
+    function confirmDelete(event, form){
+        
+        event.preventDefault();
+
+        const erase = confirm(`Deseja mesmo excluir o documento ${document.getElementById('code').value}?`);
+        
+        erase ? form.submit() : null;
+
+    }
+
+</script>
+
+<%-include('../../../partials/footer.ejs');%>

@@ -1,0 +1,245 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Empresa</h3></div>
+
+        <hr>
+
+        <form>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Informações</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-2">
+                            <label>ID:</label>
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm-10 mb-2">
+                            <label>Razão Social:</label>
+                            <input type="text" class="form-control" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <label>Nome Fantasia:</label>
+                    <input type="text" class="form-control">
+
+                    <br>
+
+                    <label>Data de Fundação:</label>
+                    <input type="date" class="form-control">
+
+                    <br>
+
+                    <label>CNPJ:</label>
+                    <input type="text" class="form-control" placeholder="">
+
+                    <br>
+
+                    <label>Inscrição Estadual:</label>
+                    <input type="text" class="form-control" placeholder="">
+
+                    <br>
+
+                    <label>Inscrição Municipal:</label>
+                    <input type="text" class="form-control" placeholder="">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Endereço</h4>
+                </div>
+                <div class="card-body">
+
+                    <label>CEP:</label>
+                    <div class="form-group row">
+                        <div class="col-sm-3 mb-2">
+                          <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 73800-000" autocomplete="nope">
+                        </div>
+                        <div class="col-md-2 mb-2"><input type="button" class="btn btn-success" value="PESQUISAR"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 mb-4">
+                            <label>Estado:</label>
+                            <select class="form-control">
+                                <option value="" disabled selected>Selecione</option>
+                                <option>GO</option>
+                                <option>DF</option>
+                            </select>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <label>Cidade:</label>
+                            <input type="text" class="form-control" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <label>Endereço:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                    <br>
+
+                    <label>Complemento:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                    <br>
+
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Contato</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <label>Telefone:</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3 mb-2">
+                            <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 61999885574" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <label>Email:</label>
+
+                    <input type="email" class="form-control" id="" name="cep" placeholder="Ex. contato@gmail.com" autocomplete="nope">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Cobrança</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h5>Endereço</h5>
+                                </div>
+                                <div class="col-md-5 mb-0">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                Utilizar mesmas informações de endereço da empresa
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <label>CEP:</label>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-2">
+                                <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 73800-000" autocomplete="nope">
+                                </div>
+                                <div class="col-md-2 mb-2"><input type="button" class="btn btn-success" value="PESQUISAR"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2 mb-4">
+                                    <label>Estado:</label>
+                                    <select class="form-control">
+                                        <option value="" disabled selected>Selecione</option>
+                                        <option>GO</option>
+                                        <option>DF</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-10 mb-3">
+                                    <label>Cidade:</label>
+                                    <input type="text" class="form-control" autocomplete="nope">
+                                </div>
+                            </div>
+
+                            <label>Endereço:</label>
+                            <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                            <br>
+
+                            <label>Complemento:</label>
+                            <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                            <br>
+
+                            <label>Bairro:</label>
+                            <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h5>Contato</h5>
+                                </div>
+                                <div class="col-md-5 mb-0">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                Utilizar mesmas informações de contato da empresa
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <label>Telefone:</label>
+
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-0">
+                                    <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 61999885574" autocomplete="nope">
+                                </div>
+                            </div>
+        
+                            <label>Email:</label>
+        
+                            <input type="email" class="form-control" id="" name="cep" placeholder="Ex. financeiro@gmail.com" autocomplete="nope">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2 mb-2">
+                    <input type="submit" class="btn btn-danger btn-block" value="Excluir">
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-success btn-block" value="Salvar">
+                </div>
+            </div>
+
+            <br>
+
+        </form>
+
+    </div>
+</body>
+
+<%-include('../../../partials/footer.ejs');%>

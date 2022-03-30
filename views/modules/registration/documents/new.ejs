@@ -1,0 +1,35 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container ">
+
+        <div class="text-center mb-4"><h3>Novo Documento</h3></div>
+
+        <hr>
+
+        <form action="/cadastros/documentos/novo" method="post">
+
+            <% if(loadError) {%>
+            
+                <%-include('./forms/register/filled.ejs');%>
+
+            <%} else {%>
+                
+                <%-include('./forms/register/empty.ejs');%>
+                
+            <%} %>
+
+            <input type="submit" class="btn btn-success btn-block mb-3" value="Salvar">
+
+        </form>
+
+    </div>
+    
+</body>
+
+<%-include('../../../partials/footer.ejs');%>

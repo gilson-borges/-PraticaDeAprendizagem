@@ -1,0 +1,132 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Nova Conta Bancária</h3></div>
+
+        <hr>
+
+        <form>
+
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <div class="row mb-0">
+                        <div class="col-md-10">
+                            <h4>Informações Gerais</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group text-right">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Conta Informal
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label>ID:</label>
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label>Nome*:</label>
+                            <input type="text" class="form-control" autocomplete="nope" placeholder="" required>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="firstName">Empresa*:</label>
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option>Plena Incorporadora</option>
+                                <option>Plena 03</option>
+                                <option>Plena 04</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Cadastro Bancário</h4>
+                </div>
+                <div class="card-body">
+
+                    <label for="firstName">Banco*:</label>
+                    <select class="form-control" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option>Caixa</option>
+                        <option>Bradesco</option>
+                        <option>Sicredi</option>
+                    </select>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label>Numero Agência*:</label>
+                            <input type="text" class="form-control"  autocomplete="nope" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>Nome Agência*:</label>
+                            <input type="text" class="form-control" autocomplete="nope" placeholder="" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label>Número Conta*:</label>
+                            <input type="text" class="form-control"  autocomplete="nope" placeholder="" required>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                            <label>Dígito*:</label>
+                            <input type="text" class="form-control" autocomplete="nope" placeholder="" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <h4>Inicialização de Saldo</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label>Data*:</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-9 mb-3">
+                            <label>Saldo*:</label>
+                            <input type="text" class="form-control" autocomplete="nope" placeholder="R$" required>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <input type="submit" class="btn btn-success btn-block" value="Salvar">
+
+            <br>
+
+        </form>
+    </div>
+
+</body>
+
+<%-include('../../../partials/footer.ejs');%>

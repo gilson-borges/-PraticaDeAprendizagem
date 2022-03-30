@@ -1,0 +1,118 @@
+<%-include('../../../partials/header');%>
+
+<body>
+
+    <%-include('../../../partials/navbar');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Novo Usuário</h3></div>
+
+        <hr>
+
+        <form action="/cadastros/usuarios/novo" method="post">
+
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <h4>Informações</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-3">
+                            <label>ID:</label>
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm-10">
+                            <label>Login Usuário*:</label>
+                            <input type="text" name="user" id="user" class="form-control" autofocus="" autocomplete="nope" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3">
+                            <label>Senha*:</label>
+                            <input type="password" name="password" id="password" class="form-control" autofocus="" autocomplete="nope" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Confirmar Senha*:</label>
+                            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" autofocus="" autocomplete="nope" required>
+                        </div>
+                    </div>
+
+                    <label>Nome*:</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+
+                    <br>
+
+                    <label>E-mail*:</label>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="Ex. exemplo@gmail.com" required>
+
+                    <br>
+
+                    <label>Celular/Telefone:</label>
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="(61) 99999-9999">
+
+                    <br>
+
+                    <label class="mb-3">Permissões do Usuário:</label>
+
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="admin" name="admin" value="false">
+                        <label class="form-check-label mb-1" for="admin">Administrador</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="management" name="management" value="false">
+                        <label class="form-check-label mb-1" for="management">Gestão</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="financial" name="financial" value="false">
+                        <label class="form-check-label mb-1" for="financial">Financeiro</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="engineering" name="engineering" value="false">
+                        <label class="form-check-label mb-1" for="engineering">Engenharia</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="supply" name="supply" value="false">
+                        <label class="form-check-label mb-1" for="supply">Suprimentos</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="commercial" name="commercial" value="false">
+                        <label class="form-check-label mb-1" for="commercial">Comercial</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="sales" name="sales" value="false">
+                        <label class="form-check-label mb-1" for="sales">Vendas</label>
+
+                        <br>
+
+                        <input class="form-check-input" type="checkbox" id="registration" name="registration" value="false">
+                        <label class="form-check-label mb-0" for="registration">Registros</label>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-success btn-block" value="Salvar">
+
+            <br>
+
+        </form>
+    </div>
+
+</body>
+
+<%-include('../../../partials/footer');%>

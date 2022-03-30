@@ -1,0 +1,64 @@
+<form method="POST" action="#" onsubmit="postForm(event);">
+
+    <div class="card mb-4">
+        
+        <card class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-6 text-center">
+                        <div><h4>Consulta</h4></div>
+                    </div>
+                    <div class="col-3 text-right">
+                        <input type="button" class="btn btn-link" onclick="clearDocumentForm()" value="Limpar">
+                    </div>
+                </div>
+            </div>
+        </card>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <input type="hidden" name="documentId" id="documentId" value="-1">
+
+                <div class="col-md-2 mb-3">
+                    <label>Código:</label>
+                    <input type="text" class="form-control" id="documentCode" maxlength="4" autocomplete="off" spellcheck="false" placeholder="Ex. NFE" value="" onchange="searchDocumentByCode();">
+                </div>
+
+                <div class="col-md-10 mb-3">
+                    <label>Descrição:</label>
+                    <input type="text" class="form-control" id="documentDescription" maxlength="100" autocomplete="off" spellcheck="false" placeholder="" value="" onchange="searchDocumentByDescription();">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-10 mb-1">
+                    <input type="submit" class="btn btn-primary form-control" value="PESQUISAR">
+                </div>
+
+                <div class="col-md-2 mb-0">
+                    <a href="/cadastros/documentos/novo" class="btn btn-success form-control">NOVO +</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+<script>
+
+    function postForm(event){
+
+        event.preventDefault();
+
+        searchDocument();
+
+    }
+    
+</script>

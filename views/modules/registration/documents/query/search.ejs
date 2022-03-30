@@ -1,0 +1,299 @@
+<script>
+
+    //#region MAIN SEARCH
+
+    //#region SEARCH DOCUMENT IN DATABASE
+    function searchDocument(){
+
+        const documentId = Number(document.getElementById('documentId').value) || -1;
+
+        if(documentId !== -1){
+
+            axios.post(`${url}/documentos/search/id`, { id: documentId }).then(res => {
+
+                clearPagination();
+
+                loadDocuments([res.data]);
+
+            }).catch(() => {
+
+                alert("Ocorreu um erro inesperado em sua pesquisa, atualize a página e tente novamente!");
+
+            });
+
+
+        } else {
+
+            // RESET OFFSET
+            offset = 0;
+
+            axios.post(`${url}/documentos/search/all`, { limit, offset }).then(res => {
+
+                configurePagination(res.data.count);
+
+                loadDocuments(res.data.rows);
+
+            }).catch(() => {
+
+                alert("Ocorreu um erro inesperado, atualize a página e tente novamente!");
+
+            });
+
+        }
+    }
+    //#endregion
+
+    //#region SEARCH DOCUMENT IN DATABASE BY CODE (AUTOCOMPLETE FORM)
+    function searchDocumentByCode(){
+
+        const documentCode = document.getElementById('documentCode').value || "";
+        
+        if(documentCode.replace(/\s/g, '') !== ""){
+
+            axios.post(`${url}/documentos/search/code`, {
+
+                code: documentCode
+
+            }).then(res => {
+
+                const searchResult = res.data;
+                const documentId = Number(searchResult.id) || -1;
+
+                if(documentId > -1){
+
+                    const {id, code, description} = searchResult;
+                    
+                    fillDocumentForm(id, code, description);
+
+                } else {
+
+                    clearDocumentForm();
+
+                    document.getElementById('documentCode').focus();
+                    alert("Nenhum registro encontrado!");
+
+                }
+
+            }).catch(() => {
+                alert("Ocorreu um erro inesperado, atualize a página e tente novamente!");
+            });
+
+        } else {
+            clearDocumentForm();
+        }
+    }
+    //#endregion
+
+    //#region SEARCH DOCUMENT IN DATABASE BY DESCRIPTION (AUTOCOMPLETE FORM)
+    function searchDocumentByDescription(){
+
+        const documentDescription = document.getElementById('documentDescription').value || "";
+
+        if(documentDescription.replace(/\s/g, '') !== ""){
+
+            axios.post(`${url}/documentos/search/description`, {
+
+                description: documentDescription
+
+            }).then(res => {
+
+                const searchResult = res.data;
+
+                if(searchResult.length > 1){
+                
+                    openDocumentsPopup(searchResult);
+
+                } else if(searchResult.length === 1) {
+
+                    const {id, code, description} = searchResult[0];
+
+                    fillDocumentForm(id, code, description);
+
+                } else {
+
+                    clearDocumentForm();
+
+                    document.getElementById('documentDescription').focus();
+                    alert("Nenhum registro encontrado!");
+
+                }
+
+            }).catch(() => {
+                alert("Ocorreu um erro inesperado, atualize a página e tente novamente!");
+            });
+        
+        } else {
+            clearDocumentForm();
+        }
+    }
+    //#endregion
+
+    //#region FILL DOCUMENT FORM (AUTOCOMPLETE FORM)
+    function fillDocumentForm(id, code, description){
+
+        document.getElementById('documentId').value = id;
+        document.getElementById('documentCode').value = code;
+        document.getElementById('documentDescription').value = description;
+
+    }
+    //#endregion
+
+    //#region CLEAR DOCUMENT FORM
+    function clearDocumentForm(){
+
+        document.getElementById('documentId').value = -1;
+
+        // MAIN FORM
+        document.getElementById('documentCode').value = "";
+        document.getElementById('documentDescription').value = "";
+
+        // POPUP FORM
+        document.getElementById('documentCodePopup').value = "";
+        document.getElementById('documentDescriptionPopup').value = "";
+
+    }
+    //#endregion
+
+    //#region LOAD DOCUMENTS OF SEARCH
+    function loadDocuments(documents = []){
+
+        resultsTable.innerHTML = "";
+        let documentsHTML = "";
+
+        documents.forEach(document => {
+            documentsHTML += `<tr>
+                <td scope="row">${document.code}</td>
+                <td scope="row">${document.description}</td>
+                <td scope="row" class="text-center">
+                    <a href="/cadastros/documentos/id/${document.id}" class="btn btn-light">&#9999;</a>
+                </td>
+            </tr>`;
+        });
+
+        resultsTable.innerHTML = documentsHTML;
+
+    }
+    //#endregion
+
+    //#endregion
+
+    //#region POPUP SEARCH
+    
+    //#region OPEN POPUP WINDOW
+    function openDocumentsPopup(documents = []){
+
+        const documentDescription = document.getElementById('documentDescription').value;
+
+        // CLEAN FORMS AS A PRECAUTION
+        clearDocumentForm();
+
+        // LOAD DOCUMENTS OF SEARCH IN POPUP
+        loadDocumentsPopup(documents);
+
+        // FILL POPUP WITH DATA ENTERED BY USER
+        document.getElementById('documentCodePopup').value = "";
+        document.getElementById('documentDescriptionPopup').value = documentDescription;
+
+        // SHOW POPUP
+        document.body.style.overflow='hidden';
+        document.getElementById('documentsLockscreen').style.display = 'block';
+        document.getElementById('documentsPopup').style.display = 'block';
+
+    }
+    //#endregion
+
+    //#region LOAD DOCUMENTS OF SEARCH
+    function loadDocumentsPopup(documents = []){
+
+        let documentsHTML = "";
+
+        documents.forEach(document => {
+            documentsHTML += `<option value="${document.id}">${document.code} - ${document.description}</option>`
+        });
+
+        // LIST OF DOCUMENTS FOUND
+        document.getElementById('documentSelectId').innerHTML = documentsHTML;
+
+    }
+    //#endregion
+
+    //#region SELECT DOCUMENT IN POPUP
+    function selectDocumentPopup(){
+
+        const documentSelectId = document.getElementById('documentSelectId').value;
+
+        axios.post(`${url}/documentos/search/id`, { id: documentSelectId} ).then(res => {
+
+            // CHECKS IF A DOCUMENT WAS FOUND
+            const id = res.data.id || -1;
+
+            if(id >= 0){
+                
+                const {code, description} = res.data;
+
+                // FILL MAIN FORM
+                fillDocumentForm(id, code, description);
+
+                // SEARCH AND LOAD DATA OF THE SELECTED DOCUMENT
+                searchDocument();
+
+                // CLOSE POPUP (OBS: PASSING THE ARGUMENT THAT THERE IS A SELECTED DOCUMENT)
+                closeDocumentsPopup(true);
+
+            } else {
+                alert('Atenção! Você deve realizar uma pesquisa válida e selecionar um documento em "resultados" para continuar ou fechar o popup...');
+            }
+
+        }).catch(() => {
+            alert("Ocorreu um erro inesperado em sua pesquisa, atualize a página e tente novamente!");
+        });
+
+    }
+    //#endregion
+
+    //#region CLOSE POPUP WINDOW
+    function closeDocumentsPopup(documentSelected = false){
+
+        if(!documentSelected){
+
+            // IF THERE IS NO DOCUMENT SELECTED THE FORM IS CLEARED
+            clearDocumentForm();
+        }
+
+        document.body.style.overflow='visible';
+        document.getElementById('documentsLockscreen').style.display = 'none';
+        document.getElementById('documentsPopup').style.display = 'none';
+    }
+    //#endregion
+
+    //#region SEARCH ON POPUP
+    function searchDocumentPopup(){
+
+        const documentCode = document.getElementById('documentCodePopup').value || "";
+        const documentDescription = document.getElementById('documentDescriptionPopup').value || "";
+
+        axios.post(`${url}/documentos/search`, { code: documentCode, description: documentDescription }).then(res => {
+
+            const searchResult = res.data;
+
+            if(searchResult.length !== 0){
+
+                loadDocumentsPopup(searchResult);
+
+            } else {
+
+                alert("Nenhum registro encontrado!");
+
+                // CLEAR POPUP SELECT
+                loadDocumentsPopup([]);
+            }
+
+        }).catch(() => {
+            alert("Ocorreu um erro inesperado em sua pesquisa, atualize a página e tente novamente!");
+        });
+    }
+    //#endregion
+
+    //#endregion
+
+</script>

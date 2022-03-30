@@ -1,0 +1,119 @@
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Informações Gerais</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            
+            <div class="col-sm-2 mb-2">
+                <label for="code">Código*:</label>
+                <input type="text" class="form-control" id="code" name="code" maxlength="4" autocomplete="off" spellcheck="false" autofocus="" required>
+            </div>
+
+            <div class="col-sm-10 mb-2">
+                <label for="description">Descrição*:</label>
+                <input type="text" class="form-control" id="description" name="description" maxlength="100" autocomplete="off" spellcheck="false" required>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Propriedades</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="accountingDocument" name="accountingDocument">
+            <label class="form-check-label mb-2" for="accountingDocument">Documento contabilizável</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Contas a Pagar</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="allowPayment" name="allowPayment">
+            <label class="form-check-label mb-3" for="allowPayment">Permitir pagamento</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowDeletionPayment" name="allowDeletionPayment">
+            <label class="form-check-label mb-3" for="allowDeletionPayment">Exclusão do contas a pagar</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="blokRepeatNumberingPayment" name="blokRepeatNumberingPayment">
+            <label class="form-check-label mb-3" for="blokRepeatNumberingPayment">Bloquear numeração repetida por credor (Desconsiderando 0 a esquerda)</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowOnlyAdvance" name="allowOnlyAdvance">
+            <label class="form-check-label mb-2" for="allowOnlyAdvance">Permitir dar baixa no Contas a Pagar somente como adiantamento</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Contas a Receber</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="allowReceiving" name="allowReceiving">
+            <label class="form-check-label mb-3" for="allowReceiving">Permitir recebimento</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowDeletionReceiving" name="allowDeletionReceiving">
+            <label class="form-check-label mb-3" for="allowDeletionReceiving">Exclusão do contas a receber</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="blokRepeatNumberingReceiving" name="blokRepeatNumberingReceiving">
+            <label class="form-check-label mb-3" for="blokRepeatNumberingReceiving">Bloquear numeração repetida por cliente</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="requiredRegisterUnit" name="requiredRegisterUnit">
+            <label class="form-check-label mb-2" for="requiredRegisterUnit">Obrigatório cadastrar a unidade do título</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-3">
+
+    <div class="card-header">
+        <h5>Fiscal</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fiscalDocument" name="fiscalDocument">
+            <label class="form-check-label mb-2" for="fiscalDocument">Documento Fiscal</label>
+        </div>
+    </div>
+
+</div>

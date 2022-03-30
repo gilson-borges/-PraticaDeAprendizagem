@@ -1,0 +1,64 @@
+<div id="documentsLockscreen" class="lockscreen" onclick="closeDocumentsPopup();"></div>
+
+<div id="documentsPopup" class="popup">
+
+    <div style="position: absolute; top:-25px; right:-25px;">
+        <img src="" onclick="closeDocumentsPopup();" style="float: right; width: 85px; cursor: pointer;" ondragstart="false">
+    </div>
+
+    <form>
+        <div class="card mb-2">
+
+            <div class="card-header text-center">
+                <h5>Consulta - Documentos</h5>
+            </div>
+        
+            <div class="card-body">
+        
+                <div class="row">
+        
+                    <input type="hidden" name="documentId" id="documentIdInputPopup" value="">
+        
+                    <div class="col-md-2 mb-3">
+                        <label>Código:</label>
+                        <input type="text" class="form-control" id="documentCodePopup" maxlength="4" autocomplete="off" spellcheck="false" value="">
+                    </div>
+        
+                    <div class="col-md-10 mb-3">
+                        <label>Descrição:</label>
+                        <input type="text" class="form-control" id="documentDescriptionPopup" maxlength="100" autocomplete="off" spellcheck="false" placeholder="" value="">
+                    </div>
+        
+                </div>
+        
+                
+                <div class="row">
+        
+                    <div class="col-md-10 mb-1">
+                        <input type="button" class="btn btn-primary form-control" onclick="searchDocumentPopup();" value="PESQUISAR">
+                    </div>
+        
+                    <div class="col-md-2 mb-0">
+                        <input type="button" class="btn btn-secondary form-control" onclick="clearDocumentForm()" value="LIMPAR">
+                    </div>
+        
+                </div>
+        
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="documentSelectId">Resultados:</label>
+                    <select class="form-control" id="documentSelectId" size="6"></select>
+                </div>
+        
+                <input type="button" class="btn btn-success btn-block" value="Selecionar" onclick="selectDocumentPopup();">
+
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,124 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Nova Unidade</h3></div>
+
+        <hr>
+
+        <form>
+
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <h4>Identificação</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label>ID:</label>
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label>Unidade*:</label>
+                            <input type="text" class="form-control" autocomplete="nope" placeholder="Ex. 202-A" required>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label>Empreendimento*:</label>
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option>Plena 03</option>
+                                <option>Plena 04</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Descrição</h4>
+                </div>
+                <div class="card-body">
+
+                    <label>CEP:</label>
+                    <div class="form-group row">
+                        <div class="col-sm-3 mb-2">
+                          <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 73800-000" autocomplete="nope">
+                        </div>
+                        <div class="col-md-2 mb-2"><input type="button" class="btn btn-success" value="PESQUISAR"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 mb-4">
+                            <label>Estado:</label>
+                            <select class="form-control">
+                                <option value="" disabled selected>Selecione</option>
+                                <option>GO</option>
+                                <option>DF</option>
+                            </select>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <label>Cidade:</label>
+                            <input type="text" class="form-control" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <label>Endereço:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                    <br>
+
+                    <label>Complemento:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                    <br>
+
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control" id="" placeholder="" autocomplete="nope">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Contato</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <label>Telefone:</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3 mb-2">
+                            <input type="text" class="form-control" id="" name="cep" placeholder="Ex. 61999885574" autocomplete="nope">
+                        </div>
+                    </div>
+
+                    <label>Email:</label>
+
+                    <input type="email" class="form-control" id="" name="cep" placeholder="Ex. contato@gmail.com" autocomplete="nope">
+
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-success btn-block" value="Salvar">
+
+            <br>
+
+        </form>
+    </div>
+
+</body>
+
+<%-include('../../../partials/footer.ejs');%>

@@ -1,0 +1,116 @@
+<%-include('../../partials/header');%>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3" style="background-image: linear-gradient(45deg, #072b90, #0647a2, #046dbb); background-attachment: fixed;">
+    
+        <a href="/" class="navbar-brand">
+            <img src="/img/logo.png" style="width: 3cm;" draggable="false">
+        </a>
+    
+        <ul class="navbar-nav ml-auto">
+    
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="container text-left" style="max-width: 24cm;">
+
+        <hr>
+
+        <div class="text-center"><h3>Ajuda</h3></div>
+
+        <hr>
+
+        <div id="accordion">
+
+            <div class="card">
+
+                <div class="card-header" style="cursor: pointer;" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <label>1. Como realizar cadastro no sistema?</label>
+                </div>
+            
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        Para realizar cadastro no sistema Plena é necessário que um administrador registre seu usuário. Para isso contate um usuário com nível de administrador ou entre em contato pelo e-mail: <a href="javascript:copiarTexto();">sistema.plenaconstrutora@gmail.com</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-header" style="cursor: pointer;" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <label>2. Como acessar minha conta?</label>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        Com um cadastro válido, basta acessar a <a href="/login">página de login</a> e inserir os dados de usuário e senha.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-header" style="cursor: pointer;" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <label>3. Como faço para recuperar minha senha?</label>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        Se você não consegue acessar o seu usuário e já verificou se os dados inseridos não foram passados incorretamente existem duas alternativas:
+                        <br><br>
+                        1. Recupere a senha utilizando seu e-mail cadastrado no sistema, para isso basta ir para <a href="/login/recuperar-senha">página de recuperação de senha</a> e inserir seu e-mail. Após isso deverá ser gerado um link de recuperação, que será enviado ao seu e-email.
+                        <br><br>
+                        2. Se a primeira alternativa não funcionar, envie um e-mail com seus dados pessoais que foram cadastrados no sistema e o que você se lembra do seu usuário e senha para <a href="javascript:copiarTexto();">sistema.plenaconstrutora@gmail.com</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-header" style="cursor: pointer;" id="heading4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    <label>4. Estou tendo problemas para utilizar o sistema, o que devo fazer?</label>
+                </div>
+
+                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                    <div class="card-body">
+                        Se ao tentar utilizar o sistema ele apresentar algum problema ou bug entre em contato conosco informando os detalhes do problema para <a href="javascript:copiarTexto();">sistema.plenaconstrutora@gmail.com</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+    </div>
+
+    <script>
+
+        function copyTextToClipboard(text) {
+
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(text);
+                return;
+            }
+
+            navigator.clipboard.writeText(text);
+        }
+
+        function copiarTexto() {
+            copyTextToClipboard('sistema.plenaconstrutora@gmail.com');
+        }
+        
+    </script>
+
+</body>
+
+<%-include('../../partials/footer');%>

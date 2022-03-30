@@ -1,0 +1,23 @@
+<div id="lockscreen" class="lockscreen" onclick="closePopup()"></div>
+<div id="popup" class="popup"></div>
+
+<script>
+
+    // OPEN POPUP WINDOW
+    function openPopup(dadosHTML = ""){
+        document.body.style.overflow='hidden';
+        document.getElementById('popup').innerHTML = dadosHTML;
+        document.getElementById('lockscreen').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // CLOSE POPUP WINDOW
+    function closePopup(){
+        indicesPesquisa = null;
+        document.body.style.overflow='visible';
+        document.getElementById('popup').innerHTML = "";
+        document.getElementById('lockscreen').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+
+</script>

@@ -1,0 +1,172 @@
+<!-- FORM ALERTS -->
+<%-include('../../../../../partials/alert.ejs');%>
+
+<div class="card mb-4"> 
+
+    <div class="card-header">
+        <h5>Informações Gerais</h5>
+    </div>
+    
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-sm-2 mb-2">
+
+                <label for="code">Código:</label>
+
+                <% if(form.id){%>
+                    
+                    <input type="text" class="form-control" id="code" name="code" value="<%=form.code%>" maxlength="4" autocomplete="off" spellcheck="false" disabled>
+
+                <%} else {%>
+                    
+                    <% if(error.codeError){%>
+                
+                        <input type="text" class="form-control is-invalid" id="code" name="code" value="<%=form.code%>" maxlength="4" autocomplete="off" spellcheck="false" autofocus="" required>
+                        <div class="invalid-feedback"><%=error.codeError%></div>
+    
+                    <%} else {%>
+    
+                        <input type="text" class="form-control is-valid" id="code" name="code" value="<%=form.code%>" maxlength="4" autocomplete="off" spellcheck="false" required>
+                        <div class="valid-feedback">OK</div>
+    
+                    <%} %>
+
+                <%} %>
+
+            </div>
+
+            <div class="col-sm-10 mb-2">
+
+                <label for="description">Descrição:</label>
+
+                <% if(form.id){%>
+                    
+                    <input type="text" class="form-control" id="description" name="description" value="<%=form.description%>" maxlength="100" autocomplete="off" spellcheck="false" required>
+
+                <%} else {%>
+                    
+                    <% if(error.descriptionError){%>
+                        
+                        <input type="text" class="form-control is-invalid" id="description" name="description" value="<%=form.description%>" maxlength="100" autocomplete="off" spellcheck="false" autofocus="" required>
+                        <div class="invalid-feedback"><%=error.descriptionError%></div>
+    
+                    <%} else {%>
+    
+                        <input type="text" class="form-control is-valid" id="description" name="description" value="<%=form.description%>" maxlength="100" autocomplete="off" spellcheck="false" required>
+                        <div class="valid-feedback">OK</div>
+    
+                    <%} %>
+                
+                <%} %>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Propriedades</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="accountingDocument" name="accountingDocument" value="<%=form.accountingDocument%>" <%if(form.accountingDocument){%>checked=""<%}%>>
+            <label class="form-check-label mb-2" for="accountingDocument">Documento contabilizável</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Contas a Pagar</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="allowPayment" name="allowPayment" value="<%=form.allowPayment%>" <%if(form.allowPayment){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="allowPayment">Permitir pagamento</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowDeletionPayment" name="allowDeletionPayment" value="<%=form.allowDeletionPayment%>" <%if(form.allowDeletionPayment){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="allowDeletionPayment">Exclusão do contas a pagar</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="blokRepeatNumberingPayment" name="blokRepeatNumberingPayment" value="<%=form.blokRepeatNumberingPayment%>" <%if(form.blokRepeatNumberingPayment){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="blokRepeatNumberingPayment">Bloquear numeração repetida por credor (Desconsiderando 0 a esquerda)</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowOnlyAdvance" name="allowOnlyAdvance" value="<%=form.allowOnlyAdvance%>" <%if(form.allowOnlyAdvance){%>checked=""<%}%>>
+            <label class="form-check-label mb-2" for="allowOnlyAdvance">Permitir dar baixa no Contas a Pagar somente como adiantamento</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <h5>Contas a Receber</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+
+            <input class="form-check-input" type="checkbox" id="allowReceiving" name="allowReceiving" value="<%=form.allowReceiving%>" <%if(form.allowReceiving){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="allowReceiving">Permitir recebimento</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="allowDeletionReceiving" name="allowDeletionReceiving" value="<%=form.allowDeletionReceiving%>" <%if(form.allowDeletionReceiving){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="allowDeletionReceiving">Exclusão do contas a receber</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="blokRepeatNumberingReceiving" name="blokRepeatNumberingReceiving" value="<%=form.blokRepeatNumberingReceiving%>" <%if(form.blokRepeatNumberingReceiving){%>checked=""<%}%>>
+            <label class="form-check-label mb-3" for="blokRepeatNumberingReceiving">Bloquear numeração repetida por cliente</label>
+
+            <br>
+
+            <input class="form-check-input" type="checkbox" id="requiredRegisterUnit" name="requiredRegisterUnit" value="<%=form.requiredRegisterUnit%>" <%if(form.requiredRegisterUnit){%>checked=""<%}%>>
+            <label class="form-check-label mb-2" for="requiredRegisterUnit">Obrigatório cadastrar a unidade do título</label>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-3">
+
+    <div class="card-header">
+        <h5>Fiscal</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fiscalDocument" name="fiscalDocument" value="<%=form.fiscalDocument%>" <%if(form.fiscalDocument){%>checked=""<%}%>>
+            <label class="form-check-label mb-2" for="fiscalDocument">Documento Fiscal</label>
+        </div>
+    </div>
+
+</div>
+
+<input type="hidden" id="generalError" value="<%=error.generalError%>">
+
+<script>
+
+    // GENERAL ERROR IN FORM SUBMISSION
+    (document.getElementById('generalError').value != "") ? alert(document.getElementById('generalError').value) : null;
+
+</script>

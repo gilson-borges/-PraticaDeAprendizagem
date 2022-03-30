@@ -1,0 +1,64 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Documentos</h3></div>
+
+        <hr>
+
+        <!-- FORM ALERTS -->
+        <%-include('../../../partials/alert.ejs');%>
+
+        <!-- MAIN AND POPUP FORMS -->
+        <%-include('./forms/search/main.ejs');%>
+        <%-include('./forms/search/popup.ejs');%>
+
+        <div class="text-center mb-4"><h5>Resultados de Consulta</h5></div>
+
+        <hr>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm">
+
+                <thead>
+                    <tr>
+                        <th scope="col" style="min-width: 40px; width: 20%;">Código</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col" style="min-width: 40px; width: 10%;" class="text-center">Opções</th>
+                    </tr>
+                </thead>
+
+                <tbody id="resultsTable">
+                    <tr>
+                        <td scope="row">...</td>
+                        <td scope="row">...</td>
+                        <td scope="row">...</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <hr class="mt-1 mb-3">
+
+        <div class="justify-content-center text-center" id="pagination"></div>
+
+        <br>
+
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<%-include('../../../partials/modules/search/default.ejs');%>
+<%-include('../../../partials/modules/search/pagination.ejs');%>
+<%-include('./query/search.ejs');%>
+
+<%-include('../../../partials/footer.ejs');%>

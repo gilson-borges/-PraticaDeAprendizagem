@@ -1,0 +1,344 @@
+<%-include('../../../partials/header.ejs');%>
+
+<body>
+
+    <%-include('../../../partials/navbar.ejs');%>
+
+    <br>
+
+    <div class="container">
+
+        <div class="text-center mb-4"><h3>Nova Empresa</h3></div>
+
+        <hr>
+
+        <form>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Informações</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-2">
+                            <label>ID:</label>
+                            <input type="text" id="id" name="id" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm-10 mb-2">
+                            <label>Razão Social:</label>
+                            <input type="text" class="form-control" id="corporateName" name="corporateName" maxlength="255" autocomplete="none" spellcheck="false" autofocus="">
+                        </div>
+                    </div>
+
+                    <label>Nome Fantasia:</label>
+                    <input type="text" class="form-control" id="fantasyName" name="fantasyName" maxlength="255" autocomplete="none" spellcheck="false">
+
+                    <br>
+
+                    <label>Data de Fundação:</label>
+                    <input type="date" class="form-control" id="foundationDate" name="foundationDate">
+
+                    <br>
+
+                    <label>CNPJ:</label>
+                    <input type="text" class="form-control" id="CNPJ" name="CNPJ" maxlength="14" autocomplete="none" spellcheck="false" placeholder="00.000.000/0001-00">
+
+                    <br>
+
+                    <label>Inscrição Estadual:</label>
+                    <input type="text" class="form-control" id="stateRegistration" name="stateRegistration" maxlength="20" autocomplete="none" spellcheck="false">
+
+                    <br>
+
+                    <label>Inscrição Municipal:</label>
+                    <input type="text" class="form-control" id="municipalRegistration" name="municipalRegistration" maxlength="20" autocomplete="none" spellcheck="false">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Endereço</h4>
+                </div>
+                <div class="card-body">
+
+                    <label>CEP:</label>
+
+                    <div class="row">
+
+                        <div class="col-sm-3 mb-3">
+                            <input type="text" class="form-control" id="zipCode" name="zipCode" maxlength="8" autocomplete="none" spellcheck="false" placeholder="Ex. 00000-000" onchange="reuseZipCode();">
+                        </div>
+
+                        <div class="col-md-2 mb-3"><input type="button" class="btn btn-success" value="PESQUISAR" onclick="findZipCode();"></div>
+                    
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-2 mb-3">
+                            <label>Estado:</label>
+                            <select class="form-control" id="state" name="state" onchange="reuseZipCode();">
+                                <%-include('../../../partials/inputs/stateOptions.ejs');%>
+                            </select>
+                        </div>
+
+                        <div class="col-md-10 mb-3">
+                            <label>Cidade:</label>
+                            <input type="text" class="form-control" id="city" name="city" maxlength="50" autocomplete="none" spellcheck="false" onchange="reuseZipCode();">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Endereço:</label>
+                            <input type="text" class="form-control" id="andress" name="andress" maxlength="255" autocomplete="none" spellcheck="false" onchange="reuseZipCode();">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Complemento:</label>
+                            <input type="text" class="form-control" id="andressComplement" name="andressComplement" maxlength="255" autocomplete="none" spellcheck="false" onchange="reuseZipCode();">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Bairro:</label>
+                            <input type="text" class="form-control" id="district" name="district" maxlength="50" autocomplete="none" spellcheck="false" onchange="reuseZipCode();">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Número:</label>
+                            <input type="text" class="form-control" id="andressNumber" name="andressNumber" maxlength="10" autocomplete="none" spellcheck="false" onchange="reuseZipCode();">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Contato</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <label>Telefone:</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3 mb-2">
+                            <input type="text" class="form-control" id="telephone" name="telephone" maxlength="13" autocomplete="none" spellcheck="false" placeholder="Ex. 61999885574">
+                        </div>
+                    </div>
+
+                    <label>Email:</label>
+
+                    <input type="email" class="form-control" id="email" name="email" maxlength="255" autocomplete="none" spellcheck="false" placeholder="Ex. contato@gmail.com">
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Cobrança</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h5>Endereço</h5>
+                                </div>
+                                <div class="col-md-5 mb-0">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="checkReuseZipCode" name="checkReuseZipCode" onchange="reuseZipCode();">
+                                            <label class="form-check-label" for="checkReuseZipCode">
+                                                Utilizar mesmas informações de endereço da empresa
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <label>CEP:</label>
+
+                            <div class="row">
+
+                                <div class="col-sm-3 mb-3">
+                                    <input type="text" class="form-control" id="billingZipCode" name="billingZipCode" maxlength="8" autocomplete="none" spellcheck="false" placeholder="Ex. 00000-000">
+                                </div>
+        
+                                <div class="col-md-2 mb-3"><input type="button" class="btn btn-success" id="searchBillingZipCodeButton" name="searchBillingZipCodeButton" value="PESQUISAR" onclick="findZipCode(false);"></div>
+                            
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-2 mb-3">
+                                    <label>Estado:</label>
+                                    <select class="form-control" id="billingState" name="billingState">
+                                        <%-include('../../../partials/inputs/stateOptions.ejs');%>
+                                    </select>
+                                </div>
+        
+                                <div class="col-md-10 mb-3">
+                                    <label>Cidade:</label>
+                                    <input type="text" class="form-control" id="billingCity" name="billingCity" maxlength="50" autocomplete="none" spellcheck="false">
+                                </div>
+        
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Endereço:</label>
+                                    <input type="text" class="form-control" id="billingAndress" name="billingAndress" maxlength="255" autocomplete="none" spellcheck="false">
+                                </div>
+        
+                                <div class="col-md-6 mb-3">
+                                    <label>Complemento:</label>
+                                    <input type="text" class="form-control" id="billingAndressComplement" name="billingAndressComplement" maxlength="255" autocomplete="none" spellcheck="false">
+                                </div>
+        
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Bairro:</label>
+                                    <input type="text" class="form-control" id="billingDistrict" name="billingDistrict" maxlength="50" autocomplete="none" spellcheck="false">
+                                </div>
+        
+                                <div class="col-md-6 mb-3">
+                                    <label>Número:</label>
+                                    <input type="text" class="form-control" id="billingAndressNumber" name="billingAndressNumber" maxlength="10" autocomplete="none" spellcheck="false">
+                                </div>
+        
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h5>Contato</h5>
+                                </div>
+                                <div class="col-md-5 mb-0">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                Utilizar mesmas informações de contato da empresa
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <label>Telefone:</label>
+
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-0">
+                                    <input type="text" class="form-control" id="billingTelephone" name="billingTelephone" maxlength="8" autocomplete="none" spellcheck="false" placeholder="Ex. 61999885574">
+                                </div>
+                            </div>
+        
+                            <label>Email:</label>
+        
+                            <input type="email" class="form-control" id="billingEmail" name="billingEmail" maxlength="8" autocomplete="none" spellcheck="false" placeholder="Ex. financeiro@gmail.com">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-success btn-block" value="Salvar">
+
+            <br>
+
+        </form>
+
+    </div>
+</body>
+
+<script>
+
+    function findZipCode(mainZipCode = true){
+
+        const zipCode = mainZipCode ? document.getElementById('zipCode').value : document.getElementById('billingZipCode').value; 
+
+        console.log(zipCode)
+
+        axios.post('/zipCode', { zipCode }).then((res) => {
+
+            if(res.data){
+
+                const andress = res.data;
+
+                const andressInputs = mainZipCode ? [document.getElementById('state'), document.getElementById('city'), document.getElementById('andress'), document.getElementById('district')] : [document.getElementById('billingState'), document.getElementById('billingCity'), document.getElementById('billingAndress'), document.getElementById('billingDistrict')];
+                const andressValues = [andress.state, andress.city, andress.street, andress.neighborhood];
+
+                for(let i = 0; i < andressInputs.length; i++){
+                    andressInputs[i].value = andressValues[i];
+                }
+
+                console.log(res.data);
+
+            } else {
+
+                console.log("CEP Inválido");
+
+            }
+
+        }).catch(() => {
+
+            console.log('Não deu certo!');
+
+        })
+
+    }
+
+    function reuseZipCode(){
+
+        const andressInputs = [document.getElementById('zipCode'), document.getElementById('state'), document.getElementById('city'), document.getElementById('andress'), document.getElementById('andressComplement'), document.getElementById('district'), document.getElementById('andressNumber')];
+        const billingAndressInputs = [document.getElementById('billingZipCode'), document.getElementById('billingState'), document.getElementById('billingCity'), document.getElementById('billingAndress'),document.getElementById('billingAndressComplement'), document.getElementById('billingDistrict'), document.getElementById('billingAndressNumber')];
+
+        if(document.getElementById('checkReuseZipCode').checked){
+            for(let i = 0; i < andressInputs.length; i++){
+                billingAndressInputs[i].value = andressInputs[i].value;
+                billingAndressInputs[i].disabled = true;
+            }
+            document.getElementById('searchBillingZipCodeButton').disabled = true;
+        } else {
+            for(let i = 0; i < andressInputs.length; i++){
+                billingAndressInputs[i].value = "";
+                billingAndressInputs[i].disabled = false;
+            }
+            document.getElementById('searchBillingZipCodeButton').disabled = false;
+        }
+
+    }
+
+    function reuseTelephone(){
+
+        console.log('Olá');
+
+    }
+
+</script>
+
+<%-include('../../../partials/footer.ejs');%>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/signin.css">
+</head>
+
+<body class="text-center" style="background-image: linear-gradient(to bottom,#046dbb, #0647a2, #072b90); background-attachment: fixed;">
+    <nav class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background:transparent; background-attachment: fixed;">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/ajuda">Ajuda</a>
+                </li>
+            </ul>
+        </nav>
+    </nav>
+
+    <form class="form-signin" action="/login/auth" method="POST">
+
+        <div id="loginForm">
+
+            <img src="/img/logo.png" class="mb-5" style="width: 6cm;" draggable="false">
+
+            <label for="user" class="sr-only">User</label>
+            <input type="user" name="user" id="user" class="form-control" placeholder="Usuário" autofocus="" spellcheck="false" required>
+
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Senha" required>
+
+            <button class="btn btn-lg btn-primary btn-block mb-3" type="submit">Entrar</button>
+
+            <a href="/login/recuperar-senha"><font style="color: rgb(201, 201, 201);">Esqueci minha senha</font></a>
+
+        </div>
+        <!--img class="mb-3" src="/img/logo.png" width="168" height="168" draggable="false"-->
+    </form>
+</body>
+
+<%-include('../../partials/footer');%>

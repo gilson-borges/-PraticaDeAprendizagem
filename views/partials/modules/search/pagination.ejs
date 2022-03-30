@@ -1,0 +1,146 @@
+<script>
+    
+    // PAGINATION CONTROLLER
+    const limit = 5;
+
+    let offset = 0;
+    let actualPage = 1;
+    let numberOfPages = 1;
+    let amountOfResults = 0;
+
+    function configurePagination(count){
+
+        offset = 0;
+        actualPage = 1;
+        numberOfPages = Math.ceil(count / limit);
+        amountOfResults = count;
+        loadPagination();
+
+    }
+
+    function clearPagination(){
+
+        offset = 0;
+        actualPage = 1;
+        numberOfPages = 1;
+        amountOfResults = 1;
+        loadPagination();
+
+    }
+
+    function updatePagination(count){
+        
+        numberOfPages = Math.ceil(count / limit);
+        amountOfResults = count;
+
+    }
+
+    function firstPage(){
+
+        loadPage(1);
+    }
+
+    function lastPage(){
+
+        loadPage(numberOfPages, true);
+    }
+
+    function nextPage(){
+
+        loadPage(actualPage + 1);
+
+    }
+
+    function previousPage(){
+
+        loadPage(actualPage - 1);
+
+    }
+    
+    const urlCountDocuments = '/documentos/search/count';
+    const urlAllDocuments = '/documentos/search/all';
+
+    // LOAD LANDING PAGE 
+    function loadPage(userLandingPage = 1, lastPage = false){
+
+        let landingPage = Number(userLandingPage) || 1;
+
+        axios.post(`${url}${urlCountDocuments}`, {}).then(res => {
+
+            updatePagination(res.data.count);
+
+            if(landingPage > numberOfPages){
+
+                landingPage = numberOfPages;
+
+            } else if (landingPage < 1) {
+
+                landingPage = 1;
+
+            } 
+
+            // CHECK IF USER SELECTED LAST PAGE ARROW
+            landingPage = lastPage ? numberOfPages : landingPage;
+
+            actualPage = landingPage;
+            offset = (actualPage - 1) * limit;
+
+            console.log(actualPage, offset);
+
+            axios.post(`${url}${urlAllDocuments}`, { limit, offset }).then(res => {
+            
+                loadDocuments(res.data.rows);
+                loadPagination();
+
+            }).catch(() => { console.log('aqui 1'); });
+
+        }).catch(() => { console.log('aqui 2'); });
+
+    }
+
+    function loadPagination(){
+
+        if(numberOfPages === 1){
+
+            document.getElementById('pagination').innerHTML = `<p class="mt-0 mb-0">${amountOfResults} resultado(s)...</p>`;
+
+        } else {
+
+            let resultsDescription = "";
+
+            if(amountOfResults > 0){
+
+                resultsDescription = (actualPage === numberOfPages) ?  `Exibindo: ${offset + 1} até ${amountOfResults} de ${amountOfResults}` : `Exibindo: ${offset + 1} até ${offset + limit} de ${amountOfResults}`;
+                
+            }
+
+            document.getElementById('pagination').innerHTML = `
+            <table style="width: 100%; max-width: 8cm; text-align: center;" align="center">
+                <tr>
+
+                    <td style="width: 12%;" class="btn btn-link ${actualPage == 1 ? 'disabled' : ''}" onclick="firstPage();"><strong>&laquo;</strong></td>
+                    <td style="width: 12%;" class="btn btn-link ${actualPage == 1 ? 'disabled' : ''}" onclick="previousPage();"><strong>&lsaquo;</strong></td>
+
+                    <td style="width: 19%;">
+                        <input type="text" style="max-width: 1.4cm; text-align: center;" value="${actualPage}" onchange="loadPage(this.value);">
+                    </td>
+
+                    <td style="width: 14%;">de</td>
+
+                    <td style="width: 19%;">
+                        <input type="text" style="max-width: 1.4cm; text-align: center;" value="${numberOfPages}" disabled>
+                    </td>
+        
+                    <td style="width: 12%;" class="btn btn-link ${actualPage == numberOfPages ? 'disabled' : ''}" onclick="nextPage();"><strong>&rsaquo;</strong></td>
+                    <td style="width: 12%;" class="btn btn-link ${actualPage == numberOfPages ? 'disabled' : ''}" onclick="lastPage();"><strong>&raquo;</strong></td>
+
+                </tr>
+            </table>
+            
+            <p class="mt-2 mb-0">${resultsDescription}</p>`;
+        }
+    }
+
+    loadPagination();
+
+</script>
